@@ -8,8 +8,16 @@
       <v-flex xs12>
         <v-text-field  v-model="description" @keydown.enter="addTodo"/>
       </v-flex>
-        <v-flex xs3 :key="i" v-for="(todo, i) in todos" ml-3 mb-3>
-          <v-card color=secundary>
+      <transition-group name="fade">
+      <!-- Jeová me dê forças -->
+          <v-card
+            xs12
+            color=secundary
+            :key="i"
+            v-for="(todo, i) in todos"
+            ml-3
+            mb-3
+          >
             <div>
               {{todo}}
             </div>
@@ -17,7 +25,7 @@
               x
             </v-btn>
           </v-card>
-        </v-flex>
+      </transition-group>
     </v-layout>
   </v-container>
 </template>
@@ -42,12 +50,11 @@
 
 <style>
 .fade-enter-active, .fade-leave-active {
-  transition: all 800ms;
-  transform: scale(1) rotateY(0deg);
+  transition: all 400ms;
+  transform: scale(1)
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
-  transform: scale(0.1) rotateY(-360deg);
-  margin-left: -300px;   
+  transform: scale(0.1)
 }
 </style>
